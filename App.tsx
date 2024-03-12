@@ -3,10 +3,7 @@ import {Text, TextInput, View} from 'react-native';
 
 const App = () => {
   // @ts-ignore
-  const {textInputValue, setTextInputValue} = useState('タイプしてみて！')
-  const handleInputChange = (text: any) =>{
-    setTextInputValue(text);
-  }
+  const [text, setText] = useState('')
   return(
       <View
         style={{
@@ -14,15 +11,16 @@ const App = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text>{textInputValue}</Text>
+        <Text>{text}</Text>
         <TextInput
           style={{
             height: 40,
             borderColor: 'gray',
             borderWidth: 1,
           }}
-          onChangeText={handleInputChange}
-          defaultValue='タイプしてみて！'>
+          placeholder='タイプして！'
+          onChangeText={newText => setText(newText)}
+          defaultValue={text}>
       </TextInput>
       </View>
   );
